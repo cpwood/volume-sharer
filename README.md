@@ -1,6 +1,6 @@
 # volume-sharer
 
-This is a fork of [gdiepen/volume-sharer] (https://github.com/gdiepen/volume-sharer) with multi-arch builds on [Docker Hub](https://hub.docker.com/repository/docker/cpwood/volume-sharer).
+This is a fork of [gdiepen/volume-sharer] (https://github.com/gdiepen/volume-sharer) with multi-arch builds on [Docker Hub](https://hub.docker.com/repository/docker/cpwood/volume-sharer). Anonymous volumes are also excluded.
 
 On my windows 10 laptop from work it is possible to make use of Docker, but due to security restrctions that are in place, I am not able to bind mount a windows folder in a container.
 

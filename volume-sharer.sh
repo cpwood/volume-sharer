@@ -278,7 +278,8 @@ create_volume_shares(){
     #Now loop over all of the volume shares
     rm -f /etc/samba/volume_shares.conf
     touch /etc/samba/volume_shares.conf
-    for docker_volume in `docker volume ls | grep "^local" | sed 's/^local *//'`
+    # Exclude anonymous volumes
+    for docker_volume in `docker volume ls | grep "^local" | grep -v "[a-f0-9]\{64\}$" | sed 's/^local *//'`
     do
         eval volumeshare ${docker_volume} "/docker_volumes/${docker_volume}/_data" "yes" "no"
     done
