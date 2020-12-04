@@ -1,5 +1,7 @@
 # volume-sharer
 
+This is a fork of [gdiepen/volume-sharer] (https://github.com/gdiepen/volume-sharer) with multi-arch builds on [Docker Hub](https://hub.docker.com/repository/docker/cpwood/volume-sharer).
+
 On my windows 10 laptop from work it is possible to make use of Docker, but due to security restrctions that are in place, I am not able to bind mount a windows folder in a container.
 
 In order to be able to still work easily with data volumes and access the content of them from within my windows environment I updated the dperson/samba container image to not only contain a Docker installation to check all data volumes, but also keep on refreshing the list of shares whenever a data volumes are added/removed.
@@ -16,14 +18,14 @@ This means that we will need the following:
 When running under windows, it will typically already run the SMB shares on the ports 139 and 445 so you cannot use these ports. In order to work around this, you can state that you do not want to bind the ports to the windows host system, but that I want to bind them to the docker image running in Hyper-V.
 
 This is achieved by giving it the same net as the Hyper-V by using the following commandline:
-```docker run --name volume-sharer  --rm -v /var/lib/docker/volumes:/docker_volumes -p 139:139 -p 445:445  -v /var/run/docker.sock:/var/run/docker.sock --net=host -d gdiepen/volume-sharer``` 
+```docker run --name volume-sharer  --rm -v /var/lib/docker/volumes:/docker_volumes -p 139:139 -p 445:445  -v /var/run/docker.sock:/var/run/docker.sock --net=host -d cpwood/volume-sharer``` 
 
 
 
 ## Linux
 If you don't have samba running on your host-system, you can bind the ports. The complete commandline will be:
 
-```docker run --name volume-sharer  --rm -v /var/lib/docker/volumes:/docker_volumes -p 139:139 -p 445:445  -v /var/run/docker.sock:/var/run/docker.sock -d gdiepen/volume-sharer```
+```docker run --name volume-sharer  --rm -v /var/lib/docker/volumes:/docker_volumes -p 139:139 -p 445:445  -v /var/run/docker.sock:/var/run/docker.sock -d cpwood/volume-sharer```
 
 
 ##More details
