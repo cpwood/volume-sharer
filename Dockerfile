@@ -1,4 +1,4 @@
-FROM dperson/samba
+FROM dockurr/samba
 
 VOLUME ["/etc/samba"]
 
