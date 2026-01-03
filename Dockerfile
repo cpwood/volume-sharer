@@ -5,7 +5,8 @@ VOLUME ["/etc/samba"]
 
 #Based on this, we now install docker inside this image
 #this means we have to install cURL and docker
-RUN apk --no-cache --no-progress upgrade \
+RUN apk update \
+    && apk --no-cache --no-progress upgrade \
     && apk --no-cache --no-progress add docker
 
 #This is needed to ensure smbd is running as root to access
